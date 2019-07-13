@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>易生活EasyLife</title>
+
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.js"></script>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	
+		<!-- jQuery -->
+		<script src="js/jquery.min.js"></script>
+		<!-- jQuery Easing -->
+		<script src="js/jquery.easing.1.3.js"></script>
+		<!-- Bootstrap -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Waypoints -->
+		<script src="js/jquery.waypoints.min.js"></script>
+		<!-- Stellar -->
+		<script src="js/jquery.stellar.min.js"></script>
+		<!-- Magnific Popup -->
+		<script src="js/jquery.magnific-popup.min.js"></script>
+		<script src="js/magnific-popup-options.js"></script>
+		<!-- Main -->
+		<script src="js/main.js"></script>
+
+		<style type="text/css">
+				.text {
+				  font-size: 14px;
+				}
+			  
+				.item {
+				  margin-bottom: 18px;
+				}
+			  
+				.clearfix:before,
+				.clearfix:after {
+				  display: table;
+				  content: "";
+				}
+				.clearfix:after {
+				  clear: both
+				}
+			  
+				.box-card {
+					width: 80%;
+				}
+				.cardimg{
+					float: left;
+    				margin-bottom: 20px;
+				}
+			  </style>
+</head>
+
+<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="app">
+		<nav class="gtco-nav" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2 col-xs-12" style="margin-top:1.5%;" >
+						<div id="gtco-logo">
+							<a href="index.html">易生活
+								<em>EasyLife</em>
+							</a>
+						</div>
+					</div>
+					
+					<el-menu
+								:default-active="activeIndex2"
+								class="el-menu-demo"
+								mode="horizontal"
+								@select="handleSelect"
+								background-color="rgba(255, 255, 255, 0)"
+								active-text-color="#f7596e"
+								text-color="white"
+								style="font-weight: 550;">
+							<el-menu-item index="1" style="margin-left: 15%;">资产管理</el-menu-item>
+							<el-menu-item index="2" >便民服务</el-menu-item>
+							<el-menu-item index="3" >限额提醒</el-menu-item>
+							<el-menu-item index="4" >用户管理</el-menu-item>
+							<el-dropdown style="float: right;margin-top: 1%;">
+								<el-avatar  icon="el-icon-user-solid">
+								</el-avatar>
+								<el-dropdown-menu slot="dropdown">
+		  							<el-dropdown-item>用户名</el-dropdown-item>
+									<el-dropdown-item>用户管理</el-dropdown-item>
+									<el-dropdown-item>登出</el-dropdown-item>
+									<el-dropdown-item>注册</el-dropdown-item>
+									<el-dropdown-item>更换账号</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+								
+
+						</el-menu>
+						
+						<!--
+						<ul>
+							<li class="active">
+								<a href="#" data-nav-section="home">Home</a>
+							</li>
+							<li>
+								<a href="#" data-nav-section="section1">初识亚信</a>
+							</li>
+							<li>
+								<a href="#" data-nav-section="section2">项目介绍</a>
+							</li>
+							<li>
+								<a href="#" data-nav-section="section3">实习期间</a>
+							</li>
+							<li>
+								<a href="#" data-nav-section="section4">实习所得</a>
+							</li>
+							<li class="btn-cta">
+								<a href="#" data-nav-section="section5">
+									<span>感谢</span>
+								</a>
+							</li>
+						</ul>-->
+					</div>
+				</div>
+
+		</nav>
+
+		<section id="gtco-hero" class="gtco-cover" style="background-image: url(images/img_bg_4.jpg);" data-section="home" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-0 text-center">
+						<div class="display-t">
+							<div class="display-tc" style="text-align: -webkit-center;">
+									<el-card class="box-card" style="background-color: rgba(255, 255, 255, 0.61);">
+										<div slot="header" class="clearfix">
+											<span>个人总资产</span>
+											
+											
+										</div>
+										<div class="text item">
+											<el-image
+												style="width: 150px; height: 150px"
+												:src="url"
+												:fit="fit"
+												class = "cardimg"></el-image>
+											<div >当前资产：</div>
+											<el-form ref="currentMoney" :model="currentMoney" label-width="80px">
+												<el-form-item label="活动名称">
+												<el-input v-model="currentMoney.money"></el-input>
+												</el-form-item>
+											</el-form>
+										</div>
+									</el-card>
+								<h1 class="animate-box" data-animate-effect="fadeIn"></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="gtco-section1" data-section="section1">
+			<div class="container">
+				<div class="row row-pb-md">
+					<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
+						<h1>浙商银行</h1>
+						<p class="sub"> </p>
+						<p class="subtle-text animate-box" data-animate-effect="fadeIn">易生活</p>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+						<h2 class="heading-colored">浙商银行简洁</h2>
+						<p>浙商银行，是经中国银监会批准设立的全国第十二家股份制商业银行，全称为“浙商银行股份有限公司”，英文全称为“CHINA ZHESHANG BANK CO., LTD.”，英文简称“CZB”。注册资本115.06872431亿元，总行设在杭州。
+								截止2014年12月31日，浙商银行总资产达6699.57亿元，，各项存款余额3632.8亿元，各项贷款余额2590.23亿元 [1]  ，位居12家全国性股份制商业银行第11位。
+							</p>
+					</div>
+					<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft" style="right: 0%;">
+						<div>
+							<img src="images/czbank.jpg" class="img-responsive" style="box-shadow: 10px 10px 0px" alt="">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
+						<div>
+							<img src="images/asiainfo2.png" class="img-responsive" style="box-shadow: 10px 10px 0px;margin-left:97px" alt="">
+						</div>
+					</div>
+					<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+						<h2 class="heading-colored">
+
+						</h2>
+						<p>产业互联网时代，企业将从“产品提供者”转型为“客户运营商"， 与用户建立“强关系”。亚信依托二十余年的大型系统软件研发实力与丰富的现场项目管理经验，运用云计算、大数据、人工智能与物联网等创新技术，积淀研发实力，厚积薄发；聚焦用户体验，夯实运营基础，寻求商业创新，助力各行各业的客户向数字时代的客户运营商转型，为用户提供实时、精准、个性化的产品与服务。亚信愿携手客户与合作伙伴，共同探索新的软件商业模式，创造更加刚健与繁荣的产业互联网生态系统。</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<el-footer id="gtco-footer" role="contentinfo">
+			<div class="container">
+
+				<div class="row copyright">
+					<div class="col-md-12">
+						<p class="pull-left">
+							<small class="block">&copy; 2018 PRESENTATION</small>
+							<small class="block">杨一帆</a>
+							</small>
+						</p>
+						<p class="pull-right">
+							<ul class="gtco-social-icons pull-right">
+								<li>Don't click here ,I don't have any of these</li>
+								<li>
+									<a href="#">
+										<i class="icon-twitter"></i>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="icon-facebook"></i>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="icon-linkedin"></i>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="icon-dribbble"></i>
+									</a>
+								</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</el-footer>
+		</div>
+
+		<div class="gototop js-top">
+			<a href="#" class="js-gotop">
+				<i class="icon-arrow-up"></i>
+			</a>
+		</div>
+
+
+</body>
+
+
+<script src="js/indextest.js"></script>
+</html>
