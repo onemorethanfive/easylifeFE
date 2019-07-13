@@ -18,10 +18,7 @@
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/vue.js"></script>
@@ -74,8 +71,61 @@
 					width: 80%;
 				}
 				.cardimg{
+					width:200px;
+					height: 200px;
 					float: left;
-    				margin-bottom: 20px;
+					margin-bottom: 20px;
+				}
+				.moneytt{
+					color: #cf13328c;
+					font-size: 40px;
+					float: left;
+					margin-left: 10%;
+					margin-top: 1%;
+					font-weight: 550;
+					font-family: "Open Sans", Arial, sans-serif;
+				}
+				.showCurrentM{
+					background-color: #ffffff00;
+					border-color: #ffffff00;
+					font-size:40px;
+					font-weight: 550;
+				}
+				.el-dialog__body{
+					background-color: #0000000f;
+				}
+				.el-dialog__footer{
+					background-color: #0000000f;
+				}
+				.el-collapse-item__header{
+					background-color: #e26767;
+					border-radius:  10px 10px 0px 0px;
+					margin-top:-10px;
+					border: 5px solid #ffffff00;
+					font-size: 20px;
+					font-weight: 550;
+					padding-left: 15px;
+					color: white;
+				}
+				.el-collapse-item__wrap{
+					background-color: #e26767;
+					border-radius: 0px 0px 10px 10px;
+					border: 5px solid #ffffff00;
+					padding-left: 25px;
+					padding-right: 25px;
+				}
+				.el-collapse-item{
+					box-shadow: 2px -2px 2px #6666;
+					border-radius: 10px;
+				}
+				.el-collapse-item__content {
+					color:white;
+					font-size:20px;
+					font-weight: 550;
+				}
+				.el-divider--horizontal{
+					margin:0px;
+					margin-bottom:5px;
 				}
 			  </style>
 </head>
@@ -124,29 +174,7 @@
 
 						</el-menu>
 						
-						<!--
-						<ul>
-							<li class="active">
-								<a href="#" data-nav-section="home">Home</a>
-							</li>
-							<li>
-								<a href="#" data-nav-section="section1">初识亚信</a>
-							</li>
-							<li>
-								<a href="#" data-nav-section="section2">项目介绍</a>
-							</li>
-							<li>
-								<a href="#" data-nav-section="section3">实习期间</a>
-							</li>
-							<li>
-								<a href="#" data-nav-section="section4">实习所得</a>
-							</li>
-							<li class="btn-cta">
-								<a href="#" data-nav-section="section5">
-									<span>感谢</span>
-								</a>
-							</li>
-						</ul>-->
+					
 					</div>
 				</div>
 
@@ -166,15 +194,12 @@
 											
 										</div>
 										<div class="text item">
-											<el-image
-												style="width: 150px; height: 150px"
-												:src="url"
-												:fit="fit"
-												class = "cardimg"></el-image>
-											<div >当前资产：</div>
-											<el-form ref="currentMoney" :model="currentMoney" label-width="80px">
-												<el-form-item label="活动名称">
-												<el-input v-model="currentMoney.money"></el-input>
+											<img src="images/cardbag.jpg" class = "cardimg" @click="onclick" />
+											
+											<el-form style="float:right;" ref="currentMoney" :model="currentMoney" label-width="300">
+												<div class="moneytt">当前资产：(元)</div>
+												<el-form-item >
+												<el-input class="showCurrentM" v-model="currentMoney.money" style="width:55%"></el-input>
 												</el-form-item>
 											</el-form>
 										</div>
@@ -185,6 +210,25 @@
 					</div>
 				</div>
 			</div>
+			<el-dialog
+			title="银行卡包"
+			:visible.sync="cardDialog"
+			width="30%"
+			:before-close="handleClose">
+			<span>
+				<el-collapse v-model="activeNames" @change="handleChange">
+					<el-collapse-item v-for="(card, index) in cards" :title="card.cardNumber" :key="index" :name="index">
+						<el-divider></el-divider>
+						<div>浙商银行 {{card.cardType}} </div>
+						<div>银行卡余额： {{card.cardMoney}}</div>	
+					</el-collapse-item>
+				</el-collapse>
+			</span>
+			<span slot="footer" class="dialog-footer">
+				<el-button type="danger" @click="closeCards">确 定</el-button>
+			</span>
+			</el-dialog>
+
 		</section>
 
 		<section id="gtco-section1" data-section="section1">
@@ -211,20 +255,7 @@
 					</div>
 				</div>
 
-				<div class="row">
-
-					<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-						<div>
-							<img src="images/asiainfo2.png" class="img-responsive" style="box-shadow: 10px 10px 0px;margin-left:97px" alt="">
-						</div>
-					</div>
-					<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-						<h2 class="heading-colored">
-
-						</h2>
-						<p>产业互联网时代，企业将从“产品提供者”转型为“客户运营商"， 与用户建立“强关系”。亚信依托二十余年的大型系统软件研发实力与丰富的现场项目管理经验，运用云计算、大数据、人工智能与物联网等创新技术，积淀研发实力，厚积薄发；聚焦用户体验，夯实运营基础，寻求商业创新，助力各行各业的客户向数字时代的客户运营商转型，为用户提供实时、精准、个性化的产品与服务。亚信愿携手客户与合作伙伴，共同探索新的软件商业模式，创造更加刚健与繁荣的产业互联网生态系统。</p>
-					</div>
-				</div>
+				
 			</div>
 		</section>
 
@@ -276,6 +307,8 @@
 				<i class="icon-arrow-up"></i>
 			</a>
 		</div>
+
+
 
 
 </body>
